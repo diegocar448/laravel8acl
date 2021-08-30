@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\DetailPlan;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Plan extends Model
 {
@@ -25,5 +26,10 @@ class Plan extends Model
                         ->paginate(10);
 
         return $results;
+    }
+
+    public function details()
+    {        
+        return $this->hasMany(DetailPlan::class);
     }
 }
