@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Plan;
-use Illuminate\Support\Str;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdatePlan;
@@ -32,10 +32,8 @@ class PlanController extends Controller
     }
 
     public function store(StoreUpdatePlan $request)
-    {
-        $data = $request->all();
-        $data['url'] = Str::kebab($request->name);
-        $this->repository->create($data);
+    {        
+        $this->repository->create($request->all());
 
         return redirect()->route('plans.index');
     }
