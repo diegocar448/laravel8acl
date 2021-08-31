@@ -20,6 +20,13 @@ Route::prefix('admin')
 
 
     /* 
+    * Routes Profiles
+    */
+    Route::any("profiles/search", "ACL\ProfileController@search")->name("profiles.search");    
+    Route::resource('profiles', "ACL\ProfileController");
+
+
+    /* 
     * Routes Detail Plans
     */
     Route::get('plans/{url}/details/create', 'DetailPlanController@create')->name('details.plan.create');
