@@ -8,7 +8,7 @@
             <a href="{{ route('admin.index') }}">Dashboard</a>
         </li>
         <li class="breadcrumb-item active">
-            <a href="{{ route('profiles.index') }}">Planos</a>
+            <a href="{{ route('profiles.index') }}">Perfis</a>
         </li>
     </ol>
 
