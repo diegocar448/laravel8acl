@@ -20,6 +20,13 @@ Route::prefix('admin')
 
 
     /* 
+    * Routes Permissions
+    */
+    Route::any("permissions/search", "ACL\PermissionController@search")->name("permissions.search");    
+    Route::resource('permissions', "ACL\PermissionController");
+
+
+    /* 
     * Routes Profiles
     */
     Route::any("profiles/search", "ACL\ProfileController@search")->name("profiles.search");    

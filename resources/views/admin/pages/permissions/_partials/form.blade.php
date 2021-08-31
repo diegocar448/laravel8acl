@@ -4,11 +4,11 @@
 
 <div class="form-group">
     <label for="name">Nome:</label>
-    <input type="text" name="name" class="form-control" placeholder="Nome:" value="{{ $profile->name ?? old('name') }}">
+    <input type="text" name="name" class="form-control" placeholder="Nome:" value="{{ $permission->name ?? old('name') }}">
 </div>
 <div class="form-group">
     <label for="description">Descrição:</label>
-    <textarea name="description" class="form-control">{{ $profile->description ?? old('description') }}</textarea>
+    <textarea name="description" class="form-control">{{ $permission->description ?? old('description') }}</textarea>
 </div>
 <div class="form-group">
     <button type="submit" class="btn btn-dark">Enviar</button>
