@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Plan;
 use App\Models\Permission;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -33,7 +34,7 @@ class Profile extends Model
     {
         //id do perfil
         //$this->id;
-        $permissions = Permission::whereNotIn('id', function($query){
+        $permissions = Permission::whereNotIn('permissions.id', function($query){
             $query->select('permission_profile.permission_id as id');
             $query->from('permission_profile');
             $query->whereRaw("permission_profile.profile_id={$this->id}");
@@ -46,5 +47,14 @@ class Profile extends Model
                                     
 
         return $permissions;
+    }
+
+
+    /* 
+    * Get Plans
+    */
+    public function plans()
+    {
+        return $this->belongsToMany(Plan::class);
     }
 }
