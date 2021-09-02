@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')
                 ->namespace('Admin')
+                ->middleware('auth')
                 ->group(function() {
 
 
@@ -96,16 +98,29 @@ Route::prefix('admin')
 
 
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
 
-Route::get('/dashboard', function () {
+
+Route::get('/', 'Site\SiteController@index')->name('site.home');
+
+Route::get('/dashboard', function () { 
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
+
+/* 
+* Auth Routes
+*/
+//Auth::routes(['register' => false]);
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+Route::get('/register', function(){
+    return redirect()->route('login');
+});
